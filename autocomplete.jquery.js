@@ -234,11 +234,4 @@
 
         return this;
     };
-    /*
-    Example :
-    $('#searchBar').find('.searchBarInput').autoComplete({
-            'source': '/remote/search_suggest.php',
-            'minLength': 2
-        }
-    );*/
 })(jQuery);
