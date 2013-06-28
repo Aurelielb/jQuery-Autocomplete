@@ -1,7 +1,7 @@
 /**
  * jQuery auto complete plugin
  *
- * @desc 
+ * @desc create a list of suggestions with ajax while typing
  * @version 1
  * @author Aurélie Le Bouguennec
  * @licenses Creative Commons BY-SA 2.0
@@ -36,6 +36,7 @@
         pattern : '<a href="%url%"><span class="info">%type%</span>%label%</a>',
         name: 'autoComplete',
         disableClass: 'disabled',
+        autoWidth: true,
         delay: 400
     };
 
@@ -104,9 +105,11 @@
         oBody.append(dList);
         var obj = _workingVars.oInput;
         dList.css({
-            "position": "absolute", "top": obj.offset().top + obj.height(), "left": obj.offset().left,
-            "width": obj.outerWidth(), "display": "block"
+            "position": "absolute", "top": obj.offset().top + obj.height(), "left": obj.offset().left, "display": "block"
         });
+        if(true === params.autoWidth){
+            dList.css({"width": obj.outerWidth()});
+        }
         _workingVars.oList = dList;
 
         if ($.isFunction(params.onCreate)) {
@@ -234,4 +237,11 @@
 
         return this;
     };
+    /*
+    Example :
+    $('#searchBar').find('.searchBarInput').autoComplete({
+            'source': '/remote/search_suggest.php',
+            'minLength': 2
+        }
+    );*/
 })(jQuery);
